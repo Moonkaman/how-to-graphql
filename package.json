@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "graphql-yoga": "^1.17.4"
+    "graphql-yoga": "^1.17.4",
+    "prisma": "^1.29.1",
+    "prisma-client-lib": "^1.29.1"
   },
   "name": "graphql-prisma-tests",
   "version": "1.0.0",
