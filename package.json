@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "graphql-yoga": "^1.17.4"
+  },
+  "name": "graphql-prisma-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "description": ""
+}
