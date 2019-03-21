@@ -10,7 +10,7 @@
     "nodemon": "^1.18.10"
   },
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon src/index.js"
   },
   "keywords": [],
   "author": "",
