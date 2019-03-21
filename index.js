@@ -29,14 +29,10 @@ const resolvers = {
       return 'Deleted!';
     },
     updateLink: (parent, args) => {
-      links = links.map(link => {
-        if(link.id === `link-${args.id}`) {
-          return {id: `link-${args.id}`, url: args.url, description: args.description};
-        } else {
-          return link;
-        }
-      })
-      return links.find(link => link.id === `link-${args.id}`);
+      const link = links.find(link => link.id === `link-${args.id}`);
+      link.url = args.url ? args.url : link.url;
+      link.description = args.description ? args.description : link.description;
+      return link;
     }
   }
 }
