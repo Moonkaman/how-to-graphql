@@ -1,6 +1,11 @@
 const { GraphQLServer } = require('graphql-yoga')
 const { prisma } = require('./generated/prisma-client');
 
+const Query = require('./resolvers/Query');
+const Mutation = require('./resolvers/Mutation');
+const User = require('./resolvers/User');
+const Link = require('./resolvers/Link');
+
 
 async function main() {
   // const newLink = await prisma.createLink({
@@ -16,25 +21,10 @@ async function main() {
 main().catch(e => console.error(e));
 
 const resolvers = {
-  Query: {
-    info: () => `Another string`,
-    feed: (root, args, ctx, info) => ctx.prisma.links(),
-    link: (root, args, ctx, info) => ctx.prisma.link({id: args.id})
-  },
-  Mutation: {
-    post: (root, args, ctx) => {
-      return ctx.prisma.createLink({
-        url: args.url,
-        description: args.description
-      })
-    },
-    deleteLink: (root, args, ctx, info) => {
-      return ctx.prisma.deleteLink({id: args.id});
-    },
-    updateLink: (root, args, ctx, info) => {
-      return ctx.prisma.updateLink({where: {id: args.id}, data: {url: args.url, description: args.description}});
-    }
-  }
+  Query,
+  Mutation,
+  User,
+  Link
 }
 
 // const resolvers = {
@@ -69,7 +59,12 @@ const resolvers = {
 const server = new GraphQLServer({
   typeDefs: './src/schema.graphql',
   resolvers,
-  context: { prisma }
+  context: request => {
+    return {
+      ...request,
+      prisma
+    }
+  }
 });
 
 server.start(() => console.log('Server is running on port 4000'))
