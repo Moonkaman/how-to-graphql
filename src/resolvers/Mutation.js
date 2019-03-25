@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const {APP_SECRET, getUserId} = require('../utils');
 
 function post(root, args, ctx) {
-  const userId = getUserId(context);
+  const userId = getUserId(ctx);
   return ctx.prisma.createLink({
     url: args.url,
     description: args.description,

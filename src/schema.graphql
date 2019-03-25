@@ -28,5 +28,5 @@ type User {
   id: ID!
   name: String!
   email: String!
-  Links: [Link!]!
+  links: [Link!]!
 }
